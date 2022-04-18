@@ -1,10 +1,14 @@
 *{
     margin:0;
     padding:0;
+    box-sizing: border-box;
 }
 
 header{
     padding:20px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
     background:rgb(0 0 0 / 0.1) ;
 }
 
@@ -21,6 +25,116 @@ nav ul li a{
 nav ul li a:hover{
     background:rgb(0 0 0 / 0.1) ;
 }
+
+.menu-btn{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:32px;
+    height:32px;
+    cursor:pointer;
+    z-index: 9999;
+    /* transition: all 200ms ease-in-out; */
+    /* border:1px solid red; */
+}
+
+.menu-btn-burger, .menu-btn-burger::before, .menu-btn-burger::after{
+    width:28px;
+    height:4px;
+    background: rgba(0 0 0 / 0.8);
+    transition: all 500ms;
+}
+
+.menu-btn-burger::before, .menu-btn-burger::after{
+    content:'';
+    position:absolute;
+}
+
+.menu-btn-burger::before{
+    transform: translateY(-8px);
+}
+
+.menu-btn-burger::after{
+    transform: translateY(8px);
+}
+
+.menu-btn:hover .menu-btn-burger,
+.menu-btn:hover .menu-btn-burger::before,
+.menu-btn:hover .menu-btn-burger::after,
+.menu-btn.open .menu-btn-burger,
+.menu-btn.open .menu-btn-burger::before,
+.menu-btn.open .menu-btn-burger::after {
+    background-color: rgba(255 0 0 / 1); 
+    
+}
+
+.menu-btn.open .menu-btn-burger{
+    transform:translateX(-28px);
+    background:transparent;
+}
+
+.menu-btn.open .menu-btn-burger::before{
+    transform:rotate(45deg) translate(18px, -18px)
+}
+
+.menu-btn.open .menu-btn-burger::after{
+    transform:rotate(-45deg) translate(18px, 18px)
+}
+
+
+.off-canvas{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    visibility: hidden;
+    z-index: 99;
+}
+
+.off-canvas-bg{
+    display:block;
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    opacity:0;
+    transition:opacity 300ms;
+    background:rgba(0,0,0,0.75);
+}
+
+.off-canvas-content{
+    width:350px;
+    height:100vh;
+    padding:35px;
+    position:absolute;
+    right:0;
+    top:0;
+    background: rgb(255 255 255 / 1);
+    box-shadow: 10px 0px 20px rgb(0 0 0 / 1);
+    transform:translateX(115%);
+    transition:transform 500ms ease-in-out;
+}
+
+.off-canvas ul{list-style: none;}
+
+
+.off-canvas.active{
+    visibility:visible;
+}
+
+.off-canvas.active .off-canvas-bg{
+    opacity:1;
+}
+
+.off-canvas.active .off-canvas-content{
+    transform: translateX(0);
+}
+
 
 .main-content{
     padding:20px 35px;
