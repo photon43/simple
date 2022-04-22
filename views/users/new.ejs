@@ -1,0 +1,13 @@
+<h1>Create a New User</h1>
+<form action="/users" method="POST">
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" value="<%= user.name %>">
+    </div>
+    <div>    
+        <label>Age</label>
+        <input type="text" name="age" value="<%= user.age %>">
+    </div>        
+    <a href="/users">Cancel</a>
+    <button type="submit">Create</button>
+</form>
